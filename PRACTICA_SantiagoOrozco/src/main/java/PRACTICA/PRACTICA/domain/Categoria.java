@@ -21,9 +21,6 @@ public class Categoria implements Serializable {
     private String descripcion;
     private boolean activo;
     
-    @OneToMany(mappedBy = "categoria")
-    private List<Libro> libros;
-    
     public Categoria() {
     }
     

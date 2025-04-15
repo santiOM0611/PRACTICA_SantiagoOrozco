@@ -19,15 +19,24 @@ public class Libro implements Serializable {
     private String titulo;
     private String autor;
     private String editorial;
+    
+    @Column(name="anio_publicacion")
     private Integer anioPublicacion;
+    
     private Double precio;
     private Integer existencias;
     private boolean activo;
     
-    @ManyToOne
-    @JoinColumn(name="id_Categoria")
-    private Categoria categoria;
-    
     public Libro() {
+    }
+    
+    public Libro(String titulo, String autor, String editorial, Integer anioPublicacion, Double precio, Integer existencias, boolean activo) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.editorial = editorial;
+        this.anioPublicacion = anioPublicacion;
+        this.precio = precio;
+        this.existencias = existencias;
+        this.activo = activo;
     }
 }
