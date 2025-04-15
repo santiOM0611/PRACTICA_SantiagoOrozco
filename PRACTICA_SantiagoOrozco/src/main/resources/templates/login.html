@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>[[#{login.login}]]</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"/>
+        
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card shadow-lg">
+                        <div class="card-header bg-success text-white text-center">
+                            <h2>[[#{login.login}]]</h2>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST" th:action="@{/login}">
+                                <div class="form-group row my-3">
+                                    <label class="col-md-4 col-form-label" for="username">
+                                        <i class="fas fa-user-lock"></i> [[#{login.username}]]:
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" type="text" name="username" id="username"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row my-3">
+                                    <label class="col-md-4 col-form-label" for="password">
+                                        <i class="fas fa-key"></i> [[#{login.password}]]:
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" type="password" name="password" id="password"/>
+                                    </div>
+                                </div>
+
+                                <div class="text-center mt-4">
+                                    <button type="submit" class="btn btn-success me-2">
+                                        <i class="fas fa-sign-in-alt"></i> [[#{login.login}]]
+                                    </button>
+                                    <a th:href="@{/registro/nuevo}" class="btn btn-primary me-2">
+                                        <i class="fas fa-user-plus"></i> [[#{accion.registrar}]]
+                                    </a>
+                                    <a th:href="@{/registro/recordar}" class="btn btn-info">
+                                        <i class="fas fa-envelope"></i> [[#{accion.recordar}]]
+                                    </a>
+                                </div>
+                            </form>
+
+                            <div th:if="${param.error != null}" class="alert alert-danger mt-4 text-center">
+                                [[#{error.login}]]
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer th:replace="~{layout/plantilla :: footer}"/>
+    </body>
+</html>
