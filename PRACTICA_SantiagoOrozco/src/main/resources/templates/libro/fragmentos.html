@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <body>
         <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
         <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
-            <div class="container">
+            <div class="container" sec:authorize="hasRole('ROLE_ADMIN')">
                 <div class="row">
                     <div class="col-md-3">   
                         <button 
@@ -118,13 +119,13 @@
                                             <td class="text-center fs-6">[[${libro.precio}]]</td>
                                             <td class="text-center fs-6">[[${libro.existencias}]]</td>
                                             <td class="text-center" th:text="${libro.activo} ? 'Activo' : 'Inactivo'" />
-                                            <td>
+                                            <td sec:authorize="hasRole('ROLE_ADMIN')">
                                                 <a th:href="@{/libro/eliminar/}+${libro.idLibro}"
                                                    class="btn btn-danger">
                                                     <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
                                                 </a>
                                             </td>
-                                            <td>
+                                            <td sec:authorize="hasRole('ROLE_ADMIN')">
                                                 <a th:href="@{/libro/modificar/}+${libro.idLibro}"
                                                    class="btn btn-success">
                                                     <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]

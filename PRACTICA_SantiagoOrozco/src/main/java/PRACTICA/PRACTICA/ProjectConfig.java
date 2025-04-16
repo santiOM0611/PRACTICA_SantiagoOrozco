@@ -103,6 +103,7 @@ public class ProjectConfig implements WebMvcConfigurer {
         return http.build();
     }
 
+    /*
     @Bean
     public UserDetailsService userDetailsService() {
         UserDetails admin = User.builder()
@@ -119,9 +120,15 @@ public class ProjectConfig implements WebMvcConfigurer {
 
         return new InMemoryUserDetailsManager(lector, admin);
     }
+    */
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+    
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
+        return authConfig.getAuthenticationManager();
     }
 }
