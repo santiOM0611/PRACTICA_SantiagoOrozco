@@ -1,0 +1,11 @@
+Usuarios para ingresar a la librería: 
+
+Rol de administrador: 
+Usuario: juan
+Contraseña: 123
+
+
+Rol de usuario:
+Usuario: rebeca 
+Contraseña: 456 
+
